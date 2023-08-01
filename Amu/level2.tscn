@@ -1,0 +1,226 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://ok last try.png" type="Texture" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://new hand.png" type="Texture" id=3]
+[ext_resource path="res://land.png" type="Texture" id=4]
+[ext_resource path="res://right hand.gd" type="Script" id=5]
+[ext_resource path="res://left hand.gd" type="Script" id=6]
+[ext_resource path="res://level2.gd" type="Script" id=7]
+[ext_resource path="res://land flower.png" type="Texture" id=8]
+[ext_resource path="res://game over.tscn" type="PackedScene" id=9]
+[ext_resource path="res://end.gd" type="Script" id=10]
+[ext_resource path="res://Enemygimp.gd" type="Script" id=11]
+[ext_resource path="res://Particles2D.tscn" type="PackedScene" id=12]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 343.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 169, 39 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 224.25, 38 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 806.5, 21 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("left hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 215, 403.76 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("right hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 803, 399 ), Vector2( 686, 356 ), Vector2( 618, 511 ), Vector2( 681, 395 ), Vector2( 794, 403 ), Vector2( 794, 403 ), Vector2( 794, 403 ), Vector2( 794, 403 ), Vector2( 794, 403 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("left hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 215, 401 ), Vector2( 215, 401 ), Vector2( 215, 401 ), Vector2( 215, 401 ), Vector2( 215, 401 ), Vector2( 296, 361 ), Vector2( 397, 494 ), Vector2( 342, 397 ), Vector2( 229, 392 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "attack2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("left hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 215, 401 ), Vector2( 217, 479 ), Vector2( 217, 401 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("right hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 803, 399 ), Vector2( 808, 499 ), Vector2( 808, 399 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("right hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 803, 399 ), Vector2( 799, 344 ), Vector2( 806, 429 ), Vector2( 805, 408 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("left hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 215, 401 ), Vector2( 207, 416 ), Vector2( 212, 339 ), Vector2( 215, 401 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "intro"
+length = 0.5
+loop = true
+
+[node name="level2" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0.984314, 1 )
+position = Vector2( 506, 302 )
+scale = Vector2( 33, 18.8125 )
+texture = ExtResource( 4 )
+
+[node name="Enemygimp" type="Sprite" parent="."]
+position = Vector2( 485.75, 220.875 )
+scale = Vector2( 34.7031, 23.1953 )
+texture = ExtResource( 1 )
+script = ExtResource( 11 )
+
+[node name="platform" type="StaticBody2D" parent="."]
+position = Vector2( 511, 558 )
+
+[node name="Sprite" type="Sprite" parent="platform"]
+position = Vector2( -21, -58.25 )
+scale = Vector2( 27.4375, 4.29687 )
+texture = ExtResource( 8 )
+
+[node name="collsion" type="CollisionShape2D" parent="platform"]
+position = Vector2( -7.5, -9 )
+shape = SubResource( 2 )
+
+[node name="left hand" type="Area2D" parent="."]
+position = Vector2( 215, 403.76 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="left hand"]
+position = Vector2( -226, -25 )
+scale = Vector2( 35.07, 14.188 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left hand"]
+position = Vector2( -7, 23 )
+shape = SubResource( 3 )
+
+[node name="left one" parent="left hand" instance=ExtResource( 12 )]
+position = Vector2( 65, 19 )
+amount = 20
+lifetime = 0.4
+
+[node name="right hand" type="Area2D" parent="."]
+position = Vector2( 803, 399 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="right hand"]
+position = Vector2( 206, -43 )
+scale = Vector2( 35.0703, 14.1875 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right hand"]
+position = Vector2( 46, 6 )
+shape = SubResource( 1 )
+
+[node name="Particles2D_1" parent="right hand" instance=ExtResource( 12 )]
+position = Vector2( -77, 1.00006 )
+amount = 20
+lifetime = 0.4
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 526, 513 )
+scale = Vector2( 0.147, 0.126 )
+
+[node name="game over" parent="." instance=ExtResource( 9 )]
+pause_mode = 2
+visible = false
+margin_left = 210.0
+margin_top = 209.0
+margin_right = 213.296
+margin_bottom = 213.2
+
+[node name="end" type="Area2D" parent="."]
+position = Vector2( 491, 744 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end"]
+position = Vector2( 84.5, -11 )
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/attack = SubResource( 5 )
+anims/attack2 = SubResource( 8 )
+anims/idle = SubResource( 4 )
+anims/intro = SubResource( 9 )
+
+[connection signal="body_entered" from="left hand" to="left hand" method="_on_left_hand_body_entered"]
+[connection signal="body_entered" from="right hand" to="right hand" method="_on_right_hand_body_entered"]
+[connection signal="body_entered" from="end" to="end" method="_on_end_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
